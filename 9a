@@ -1,0 +1,18 @@
+Public class MultipleCatchBlock1 {
+  Public Static void main (string[] ags) {
+    try {
+      int a[] = new int [5];
+      a[5]=30/0;
+    }
+    Catch (ArithmeticException e) {
+      System.out.println("Arithmetic exception occurs");
+    }
+    Catch (ArrayIndexOutOfBoundsException e) {
+      System.out.println("Array Index out of bounds exception occurs");
+    }
+    Catch (Exception e) {
+      System.out.println("exception occurs");
+    }
+    System.out.println("rest of the Code");
+  }
+}
