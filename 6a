@@ -1,0 +1,20 @@
+interface Printable {
+  Void Print();
+}
+interface Showable {
+  Void Show();
+}
+Class multipleinheritance implements Printable, Showable {
+  Public Void Print() {
+    System.out.println("Hello");
+  }
+  Public Void Show() {
+    System.out.println("Welcome");
+  }
+  Public Static void main(String args[]) {
+    multipleinheritance obj = new multipleinheritance();
+    obj.Print();
+    obj.Show();
+  }
+}
+ 
