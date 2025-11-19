@@ -1,0 +1,50 @@
+Methodoverloading............
+
+Class MethodOverLoad {
+  Void calValue() {
+    int x=20;
+    x=x*x;
+    System.out.println("sqst of x is: "+x);
+  }
+  Void calValue(int y) {
+    y=y*y*y;
+    System.out.println("Cube of Y is: "+y);
+  }
+  void calValue(int m, int n) {
+    int z=m*n;
+    System.out.println("Product of m and n is: "+z);
+  }
+}
+class MOL {
+  Public Static Void main(String args[]) {
+    MethodOverLoad m=new MethodOverLoad();
+    m.calValue();
+    m.calValue(10);
+    m.calValue(10,20);
+  }
+}
+
+
+
+
+
+
+
+
+
+Method Overriding Code......
+
+class Human {
+  public void eat() {
+    System.out.println("Human is eating");
+  }
+}
+class Boy extends Human {
+  Public Void eat() {
+    System.out.println("Boy is eating.");
+  }
+  Public static void main(String args[]) {
+    Boy obj=new Boy();
+    obj.eat();
+  }
+}
