@@ -1,0 +1,125 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class SimpleCalculator extends JFrame implements ActionListener {
+
+    private JTextField display;
+    private StringBuilder currentInput;
+    private double result;
+    private String operator;
+    private boolean startNewNumber;
+
+    public SimpleCalculator() {
+        currentInput = new StringBuilder();
+        result = 0;
+        operator = "";
+        startNewNumber = true;
+
+        setTitle("Simple Calculator");
+        setSize(300, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        display = new JTextField("0");
+        display.setEditable(false);
+        display.setFont(new Font("Arial", Font.BOLD, 24));
+        display.setHorizontalAlignment(JTextField.RIGHT);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(5, 4, 5, 5));
+
+        String[] buttons = {
+            "7","8","9","/",
+            "4","5","6","*",
+            "1","2","3","-",
+            "0","C","=","+"
+        };
+
+        for (String text : buttons) {
+            JButton button = new JButton(text);
+            button.setFont(new Font("Arial", Font.BOLD, 20));
+            button.addActionListener(this);
+            buttonPanel.add(button);
+        }
+
+        setLayout(new BorderLayout(5, 5));
+        add(display, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+
+        if ("0123456789".contains(command)) {
+            if (startNewNumber) {
+                currentInput.setLength(0);
+                startNewNumber = false;
+            }
+            currentInput.append(command);
+            display.setText(currentInput.toString());
+        }
+        else if ("+-*/".contains(command)) {
+            double number = Double.parseDouble(display.getText());
+            calculate(number);
+            operator = command;
+            startNewNumber = true;
+        }
+        else if (command.equals("=")) {
+            double number = Double.parseDouble(display.getText());
+            calculate(number);
+            display.setText(String.valueOf(result));
+            operator = "";
+            startNewNumber = true;
+        }
+        else if (command.equals("C")) {
+            result = 0;
+            operator = "";
+            currentInput.setLength(0);
+            display.setText("0");
+            startNewNumber = true;
+        }
+    }
+
+    private void calculate(double number) {
+        switch (operator) {
+
+            case "+":
+                result += number;
+                break;
+
+            case "-":
+                result -= number;
+                break;
+
+            case "*":
+                result *= number;
+                break;
+
+            case "/":
+                if (number == 0) {
+                    JOptionPane.showMessageDialog(
+                        this,
+                        "Cannot divide by zero!",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                    result = 0;
+                } else {
+                    result /= number;
+                }
+                break;
+
+            case "":
+                result = number;
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        new SimpleCalculator();
+    }
+}
