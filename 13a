@@ -1,0 +1,18 @@
+import java.awt.*;
+
+public class SimpleMessage extends Frame {
+
+    public SimpleMessage() {
+        setTitle("Simple AWT Example");
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    public void paint(Graphics g) {
+        g.drawString("Hello this is Simple Program at applet", 80, 150);
+    }
+
+    public static void main(String[] args) {
+        new SimpleMessage();
+    }
+}
