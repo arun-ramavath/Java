@@ -1,0 +1,19 @@
+Package myPack;
+Public class message {
+  Public Void Show() {
+    System.out.println("message from Package).");
+  }
+}
+
+
+
+
+
+Test.java (To use the package)
+import myPack.message;
+Public class text {
+  Public static Void main(String args[]) {
+    message m = new message();
+    m.show();
+  }
+}
