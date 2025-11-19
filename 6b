@@ -1,0 +1,17 @@
+import javax.swing.*;
+public class SimpleScrollPaneExample {
+  public static void main(String[] args) {
+    JFrame frame = new JFrame("JScroll Pane Example");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(400, 300);
+    JTextArea textArea = new JTextArea(10, 30);
+    textArea.setText("This is a JTextArea inside a JScrollPane. \n" +
+      "Add more lines to see scrolling in action. \n");
+    for (int i=1; i<=20; i++) {
+      textArea.append("Line " + i + "\n");
+    }
+    JScrollPane scrollPane = new JScrollPane(textArea);
+    frame.add(scrollPane);
+    frame.setVisible(true);
+  }
+}
