@@ -1,0 +1,71 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class Week7a extends Frame implements MouseListener, MouseMotionListener {
+    String msg = "";
+    Label l1;
+    int mouseX = 0, mouseY = 0;
+
+    public Week7a() {
+        l1 = new Label();
+        l1.setBounds(20, 50, 300, 20);
+        
+        addMouseListener(this);
+        addMouseMotionListener(this);
+        
+        add(l1);
+        
+        setSize(400, 400);
+        setLayout(null);
+        setVisible(true);
+    }
+
+    public void mouseClicked(MouseEvent me) {
+        mouseX = 0;
+        mouseY = 10;
+        l1.setText("Mouse clicked.");
+        repaint();
+    }
+
+    public void mouseEntered(MouseEvent me) {
+        mouseX = 0;
+        mouseY = 10;
+        l1.setText("Mouse entered.");
+        repaint();
+    }
+
+    public void mouseExited(MouseEvent me) {
+        mouseX = 0;
+        mouseY = 10;
+        l1.setText("Mouse exited.");
+        repaint();
+    }
+
+    public void mousePressed(MouseEvent me) {
+        mouseX = me.getX();
+        mouseY = me.getY();
+        l1.setText("Pressed.");
+        repaint();
+    }
+
+    public void mouseReleased(MouseEvent me) {
+        mouseX = me.getX();
+        mouseY = me.getY();
+        l1.setText("Released.");
+        repaint();
+    }
+
+    public void mouseDragged(MouseEvent me) {
+        mouseX = me.getX();
+        mouseY = me.getY();
+        l1.setText("Dragging mouse at " + mouseX + " " + mouseY);
+    }
+
+    public void mouseMoved(MouseEvent me) {
+        l1.setText("Moving mouse at " + me.getX() + " " + me.getY());
+    }
+
+    public static void main(String[] args) {
+        new Week7a();
+    }
+}
